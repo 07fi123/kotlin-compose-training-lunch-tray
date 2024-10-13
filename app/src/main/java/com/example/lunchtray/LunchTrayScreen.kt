@@ -126,7 +126,9 @@ fun LunchTrayApp() {
                 EntreeMenuScreen(
                     options = DataSource.entreeMenuItems,
                     onCancelButtonClicked = {},
-                    onNextButtonClicked = {},
+                    onNextButtonClicked = {
+                        navController.navigate(LunchTrayScreen.SideDish.name)
+                    },
                     onSelectionChanged = { item ->
                         viewModel.updateEntree(item)
                     },
@@ -140,7 +142,9 @@ fun LunchTrayApp() {
                 SideDishMenuScreen(
                     options = DataSource.sideDishMenuItems,
                     onCancelButtonClicked = {},
-                    onNextButtonClicked = {},
+                    onNextButtonClicked = {
+                        navController.navigate(LunchTrayScreen.Accompaniment.name)
+                    },
                     onSelectionChanged = { item -> },
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
@@ -152,7 +156,9 @@ fun LunchTrayApp() {
                 AccompanimentMenuScreen(
                     options = DataSource.accompanimentMenuItems,
                     onCancelButtonClicked = {},
-                    onNextButtonClicked = {},
+                    onNextButtonClicked = {
+                        navController.navigate(LunchTrayScreen.Checkout.name)
+                    },
                     onSelectionChanged = { item -> },
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
