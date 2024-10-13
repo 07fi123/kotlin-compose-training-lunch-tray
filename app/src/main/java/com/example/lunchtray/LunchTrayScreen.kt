@@ -125,7 +125,10 @@ fun LunchTrayApp() {
             composable(route = LunchTrayScreen.Entree.name) {
                 EntreeMenuScreen(
                     options = DataSource.entreeMenuItems,
-                    onCancelButtonClicked = {},
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.SideDish.name)
                     },
@@ -141,7 +144,10 @@ fun LunchTrayApp() {
             composable(route = LunchTrayScreen.SideDish.name) {
                 SideDishMenuScreen(
                     options = DataSource.sideDishMenuItems,
-                    onCancelButtonClicked = {},
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.Accompaniment.name)
                     },
@@ -155,7 +161,10 @@ fun LunchTrayApp() {
             composable(route = LunchTrayScreen.Accompaniment.name) {
                 AccompanimentMenuScreen(
                     options = DataSource.accompanimentMenuItems,
-                    onCancelButtonClicked = {},
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.Checkout.name)
                     },
@@ -168,7 +177,10 @@ fun LunchTrayApp() {
             composable(route = LunchTrayScreen.Checkout.name) {
                 CheckoutScreen(
                     orderUiState = uiState,
-                    onCancelButtonClicked = {},
+                    onCancelButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
                     onNextButtonClicked = {},
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
