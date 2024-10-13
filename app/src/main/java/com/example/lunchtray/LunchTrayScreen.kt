@@ -151,7 +151,9 @@ fun LunchTrayApp() {
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.Accompaniment.name)
                     },
-                    onSelectionChanged = { item -> },
+                    onSelectionChanged = { item ->
+                        viewModel.updateSideDish(item)
+                    },
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
                         .padding(innerPadding)
@@ -168,7 +170,9 @@ fun LunchTrayApp() {
                     onNextButtonClicked = {
                         navController.navigate(LunchTrayScreen.Checkout.name)
                     },
-                    onSelectionChanged = { item -> },
+                    onSelectionChanged = { item ->
+                        viewModel.updateAccompaniment(item)
+                    },
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
                         .padding(innerPadding)
@@ -181,10 +185,15 @@ fun LunchTrayApp() {
                         viewModel.resetOrder()
                         navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
                     },
-                    onNextButtonClicked = {},
+                    onNextButtonClicked = {
+                        viewModel.resetOrder()
+                        navController.popBackStack(LunchTrayScreen.Start.name, inclusive = false)
+                    },
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
                         .padding(innerPadding)
+
+
                 )
             }
 
